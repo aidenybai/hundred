@@ -1,0 +1,23 @@
+{
+  "name": "mini-vdom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aidenybai/mini-vdom.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aidenybai/mini-vdom/issues"
+  },
+  "homepage": "https://github.com/aidenybai/mini-vdom#readme",
+  "devDependencies": {
+    "vite": "^2.5.7"
+  }
+}
