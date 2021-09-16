@@ -2,6 +2,8 @@
 
 Smallest possible virtual DOM implementation.
 
+> Note: If you're looking for something a bit more comprehensive, check out [Million](https://github.com/aidenybai/million)
+
 ## Installation
 
 ```sh
