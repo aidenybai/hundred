@@ -1,4 +1,4 @@
-export const m = (tag, props = {}, children = []) => ({ tag, props, children });
+export const h = (tag, props = {}, ...children) => ({ tag, props, children });
 
 export const createElement = (vnode) => {
   if (typeof vnode === 'string') return document.createTextNode(vnode);
@@ -17,12 +17,13 @@ export const createElement = (vnode) => {
 };
 
 export const patch = (el, newVNode, oldVNode) => {
-  const replace = () => el.replaceWith(createElement(newVNode));
   if (!newVNode) el.remove();
   if (typeof oldVNode === 'string' || typeof newVNode === 'string') {
-    if (oldVNode !== newVNode) return replace();
+    if (oldVNode !== newVNode) return el.replaceWith(createElement(newVNode));
   } else {
-    if (oldVNode.tag !== newVNode.tag) return replace();
+    if (oldVNode.tag !== newVNode.tag) {
+      return el.replaceWith(createElement(newVNode));
+    }
 
     for (const prop in { ...oldVNode.props, ...newVNode.props }) {
       if (newVNode.props[prop] === undefined) {

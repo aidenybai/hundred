@@ -1,9 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
+  esbuild: ^0.12.28
   vite: ^2.5.7
 
 devDependencies:
+  esbuild: 0.12.28
   vite: 2.5.7
 
 packages:
