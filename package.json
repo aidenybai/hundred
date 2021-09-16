@@ -1,23 +1,24 @@
 {
-  "name": "mini-vdom",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "name": "tiny-vdom",
+  "version": "0.0.0",
+  "description": "🤏 Smallest possible virtual DOM implementation",
+  "main": "dist/vdom.js",
+  "module": "dist/vdom.js",
+  "browser": "dist/vdom.js",
   "scripts": {
     "build": "esbuild src/vdom.ts --minify --outfile=dist/vdom.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aidenybai/mini-vdom.git"
+    "url": "git+https://github.com/aidenybai/tiny-vdom.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aidenybai/mini-vdom/issues"
+    "url": "https://github.com/aidenybai/tiny-vdom/issues"
   },
-  "homepage": "https://github.com/aidenybai/mini-vdom#readme",
+  "homepage": "https://github.com/aidenybai/tiny-vdom#readme",
   "devDependencies": {
-    "esbuild": "^0.12.28",
-    "vite": "^2.5.7"
+    "esbuild": "^0.12.28"
   }
 }
