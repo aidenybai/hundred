@@ -1,6 +1,6 @@
 {
   "name": "tiny-vdom",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "🤏 Smallest possible virtual DOM implementation",
   "main": "dist/vdom.js",
   "module": "dist/vdom.js",
