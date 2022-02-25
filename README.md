@@ -1,6 +1,8 @@
-# `tiny-vdom`
+# 🪶 `tiny-vdom`
 
-Smallest possible virtual DOM implementation.
+### Hyper-lightweight Virtual DOM
+
+`tiny-vdom` is intended to be the most lightweight virtual DOM implementation, and is a proof-of-concept and a learning resource more than a tool you should actually use in production.
 
 > Note: If you're looking for something a bit more comprehensive, check out [Million](https://github.com/aidenybai/million)
 
