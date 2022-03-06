@@ -8,11 +8,9 @@ Additionally, just because Hundred is lightweight doesn't mean it's performant b
 
 > If you're looking for something a bit more comprehensive, check out [**Million**](https://github.com/aidenybai/million) — Virtual DOM into the future! 💥🦁✨
 >
-> If you're interested in tuning into the development and future of Million, please **leave a ★** :)
->
 > -Aiden ([@aidenybai](https://github.com/aidenybai))
 
-## Install Million
+## Install Hundred
 
 Inside your project directory, run the following command:
 
