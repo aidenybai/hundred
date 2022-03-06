@@ -1,7 +1,7 @@
 {
   "name": "hundred",
-  "version": "0.0.3",
-  "description": "🤏 Smallest possible virtual DOM implementation",
+  "version": "0.0.1",
+  "description": "💯 Hyper-lightweight Virtual DOM",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "browser": "dist/index.js",
