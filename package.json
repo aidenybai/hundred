@@ -1,5 +1,5 @@
 {
-  "name": "tiny-vdom",
+  "name": "hundred",
   "version": "0.0.3",
   "description": "🤏 Smallest possible virtual DOM implementation",
   "main": "dist/index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aidenybai/tiny-vdom.git"
+    "url": "git+https://github.com/aidenybai/hundred.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aidenybai/tiny-vdom/issues"
+    "url": "https://github.com/aidenybai/hundred/issues"
   },
-  "homepage": "https://github.com/aidenybai/tiny-vdom#readme",
+  "homepage": "https://github.com/aidenybai/hundred#readme",
   "devDependencies": {
     "tsup": "^5.11.13",
     "typescript": "^4.5.5"
