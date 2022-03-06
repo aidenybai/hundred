@@ -1,14 +1,20 @@
-# 💯 Hundred
+# 💯 Hundred <img src="https://badgen.net/badgesize/brotli/https/unpkg.com/hundred?color=000000&labelColor=00000&label=bundle%20size" alt="Code Size" /> <a href="https://www.npmjs.com/package/million" target="_blank"><img src="https://img.shields.io/npm/v/million?style=flat&colorA=000000&colorB=000000" alt="NPM Version" /></a>
 
-### Hyper-lightweight Virtual DOM
+### `<1kb` Hyper-lightweight Virtual DOM
 
-`hundred` is intended to be the most lightweight virtual DOM implementation, and is a proof-of-concept and a learning resource more than a tool you should actually use in production.
+Hundred is intended to be the **most lightweight (`<1kb`) virtual DOM** implementation, and is a proof-of-concept and a learning resource more than a tool you should actually use in production.
 
-Additionally, just because `hundred` is lightweight doesn't mean it's performant by any means. It is faster and smaller than [`simple-virtual-dom`](https://github.com/livoras/simple-virtual-dom), but ranks behind [production-ready Virtual DOM libraries](https://million.js.org/benchmarks/official-benchmarks)
+Additionally, just because Hundred is lightweight doesn't mean it's performant by any means. It is **faster and smaller** than [`simple-virtual-dom`](https://github.com/livoras/simple-virtual-dom), but ranks behind [production-ready Virtual DOM libraries](https://million.js.org/benchmarks/official-benchmarks).
 
-> Note: If you're looking for something a bit more comprehensive, check out [Million](https://github.com/aidenybai/million)
+> If you're looking for something a bit more comprehensive, check out [**Million**](https://github.com/aidenybai/million) — Virtual DOM into the future! 💥🦁✨
+>
+> If you're interested in tuning into the development and future of Million, please **leave a ★** :)
+>
+> -Aiden ([@aidenybai](https://github.com/aidenybai))
 
-## Installation
+## Install Million
+
+Inside your project directory, run the following command:
 
 ```sh
 npm install hundred
