@@ -1,4 +1,4 @@
-# 💯 Hundred <img src="https://badgen.net/badgesize/brotli/https/unpkg.com/hundred?color=000000&labelColor=00000&label=bundle%20size" alt="Code Size" /> <a href="https://www.npmjs.com/package/million" target="_blank"><img src="https://img.shields.io/npm/v/million?style=flat&colorA=000000&colorB=000000" alt="NPM Version" /></a>
+# 💯 Hundred <img src="https://badgen.net/badgesize/brotli/https/unpkg.com/hundred?color=000000&labelColor=00000&label=bundle%20size" alt="Code Size" /> <a href="https://www.npmjs.com/package/million" target="_blank"><img src="https://img.shields.io/npm/v/hundred?style=flat&colorA=000000&colorB=000000" alt="NPM Version" /></a>
 
 ### `<1kb` Hyper-lightweight Virtual DOM
 
