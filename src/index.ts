@@ -27,7 +27,7 @@ interface EditAttribute {
 }
 
 interface EditText {
-  type: 'text';
+  type: 'child';
   path: number[];
   index: number;
   hole: any;
@@ -74,7 +74,7 @@ export const render = (
     const child = vnode.children[i];
     if (child instanceof Hole) {
       edits.push({
-        type: 'text',
+        type: 'child',
         path,
         index: i,
         hole: child.key,
@@ -90,6 +90,7 @@ export const render = (
 
 interface BlockInstance {
   props: Props;
+  edits: Edit[];
   mount: (parent: HTMLElement) => void;
   patch: (newBlock: BlockInstance) => void;
 }
@@ -126,7 +127,12 @@ export const block = (fn: (props: Props) => VNode) => {
 
         if (edit.type === 'attribute') {
           currentEl[edit.propName] = value;
-        } else if (edit.type === 'text') {
+        } else if (edit.type === 'child') {
+          if (value.mount && typeof value.mount === 'function') {
+            value.mount(currentEl);
+            continue;
+          }
+
           const textNode = document.createTextNode(value);
           currentEl.insertBefore(textNode, currentEl.childNodes[edit.index]);
         }
@@ -145,13 +151,18 @@ export const block = (fn: (props: Props) => VNode) => {
 
         if (edit.type === 'attribute') {
           currentEl[edit.propName] = newValue;
-        } else if (edit.type === 'text') {
+        } else if (edit.type === 'child') {
+          if (value.patch && typeof value.patch === 'function') {
+            // patch cooresponding child blocks
+            value.patch(newBlock.edits[i].hole);
+            continue;
+          }
           currentEl.childNodes[edit.index].textContent = newValue;
         }
       }
     };
 
-    return { mount, patch, props };
+    return { mount, patch, props, edits };
   };
 
   return Block;
