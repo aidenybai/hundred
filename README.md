@@ -250,6 +250,100 @@ export const block = (fn: (props: Props) => VNode) => {
         if (edit.type === 'attribute') {
           thisEl[edit.attribute] = value;
         } else if (edit.type === 'child') {
+          const textNode = document.createTextNode(value);
+          thisEl.insertBefore(textNode, thisEl.childNodes[edit.index]);
+        }
+      }
+    };
+
+    // patch updates the element references with new values
+    const patch = (newBlock: Block) => {
+      for (let i = 0; i < edits.length; i++) {
+        const edit = edits[i];
+        const value = props[edit.hole];
+        const newValue = newBlock.props[edit.hole];
+
+        // dirty check
+        if (value === newValue) continue;
+
+        const thisEl = elements[i];
+
+        if (edit.type === 'attribute') {
+          thisEl[edit.attribute] = newValue;
+        } else if (edit.type === 'child') {
+          thisEl.childNodes[edit.index].textContent = newValue;
+        }
+      }
+    };
+
+    return { mount, patch, props, edits };
+  };
+};
+```
+
+This is great, but it's not really a virtual DOM–it only allows us to create one block and patch it against itself. Oftentimes, we want to construct these blocks into trees.
+
+So, let's add a special case for block values in props.
+
+```typescript
+// block is a factory function that returns a function that
+// can be used to create a block. Imagine it as a live instance
+// you can use to patch it against instances of itself.
+export const block = (fn: (props: Props) => VNode) => {
+  // by using a proxy, we can intercept ANY property access on
+  // the object and return a Hole instance instead.
+  // e.g. props.any_prop => new Hole('any_prop')
+  const proxy = new Proxy(
+    {},
+    {
+      get(_, prop: string) {
+        return new Hole(prop);
+      },
+    }
+  );
+  // we pass the proxy to the function, so that it can
+  // replace property accesses with Hole placeholders
+  const vnode = fn(proxy);
+
+  // edits is a mutable array, so we pass it by reference
+  const edits: Edit[] = [];
+  // by rendering the vnode, we also populate the edits array
+  // by parsing the vnode for Hole placeholders
+  const root = render(vnode, edits);
+
+  // factory function to create instances of this block
+  return (props: Props): Block => {
+    // elements stores the element references for each edit
+    // during mount, which can be used during patch later
+    const elements = new Array(edits.length);
+
+    // mount puts the element for the block on some parent element
+    const mount = (parent: HTMLElement) => {
+      // cloneNode saves memory by not reconstrcuting the dom tree
+      const el = root.cloneNode(true);
+      // we assume our rendering scope is just one block
+      el.textContent = '';
+      parent.appendChild(el);
+
+      for (let i = 0; i < edits.length; i++) {
+        const edit = edits[i];
+        // walk the tree to find the element / hole
+        let thisEl = el;
+        // If path = [1, 2, 3]
+        // thisEl = el.childNodes[1].childNodes[2].childNodes[3]
+        for (let i = 0; i < edit.path.length; i++) {
+          thisEl = thisEl.childNodes[edit.path[i]];
+        }
+
+        // make sure we save the element reference
+        elements[i] = thisEl;
+
+        // this time, we can get the value from props
+        const value = props[edit.hole];
+
+        if (edit.type === 'attribute') {
+          thisEl[edit.attribute] = value;
+        } else if (edit.type === 'child') {
           // handle nested blocks if the value is a block
           if (value.mount && typeof value.mount === 'function') {
             value.mount(thisEl);
