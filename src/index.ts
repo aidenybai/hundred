@@ -160,10 +160,10 @@ export const block = (fn: (props: Props) => VNode) => {
         // dirty check
         if (value === newValue) continue;
 
-        const currentEl = elements[i];
+        const thisEl = elements[i];
 
         if (edit.type === 'attribute') {
-          currentEl[edit.attribute] = newValue;
+          thisEl[edit.attribute] = newValue;
         } else if (edit.type === 'child') {
           // handle nested blocks if the value is a block
           if (value.patch && typeof value.patch === 'function') {
@@ -171,7 +171,7 @@ export const block = (fn: (props: Props) => VNode) => {
             value.patch(newBlock.edits[i].hole);
             continue;
           }
-          currentEl.childNodes[edit.index].textContent = newValue;
+          thisEl.childNodes[edit.index].textContent = newValue;
         }
       }
     };
