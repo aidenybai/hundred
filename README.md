@@ -6,7 +6,7 @@ Hundred is intended to be a toy block virtual DOM based off of [Million.js](http
 
 Let's go through a tutorial on how to create Hundred!
 
-**Recommended rerequisites**:
+**Recommended prerequisites**:
 
 - [Read "How Million.js works"](https://millionjs.org/docs#how-does-it-work)
 - [Add these types to your TypeScript file](https://github.com/aidenybai/hundred/blob/main/src/types.ts)
