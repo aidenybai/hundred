@@ -1,14 +1,14 @@
-import { Block, Edit, Props, VElement, VNode } from './types';
+import type { Block, Edit, Props, VElement, VNode } from './types';
 
 // Helper function to create virtual dom nodes
 // e.g. h('div', { id: 'foo' }, 'hello') => <div id="foo">hello</div>
 export const h = (
   type: string,
-  props: Props = {},
+  props: Props | null = {},
   ...children: VNode[]
 ): VElement => ({
   type,
-  props,
+  props: props || {},
   children,
 });
 
@@ -82,12 +82,12 @@ export const render = (
 // block is a factory function that returns a function that
 // can be used to create a block. Imagine it as a live instance
 // you can use to patch it against instances of itself.
-export const block = (fn: (props: Props) => VNode) => {
+export const block = <TProps extends Props = Props>(fn: (props: TProps) => VNode) => {
   // by using a proxy, we can intercept ANY property access on
   // the object and return a Hole instance instead.
   // e.g. props.any_prop => new Hole('any_prop')
   const proxy = new Proxy(
-    {},
+    {} as TProps,
     {
       get(_, prop: string) {
         return new Hole(prop);
@@ -105,7 +105,7 @@ export const block = (fn: (props: Props) => VNode) => {
   const root = render(vnode, edits);
 
   // factory function to create instances of this block
-  return (props: Props): Block => {
+  return (props: TProps): Block => {
     // elements stores the element references for each edit
     // during mount, which can be used during patch later
     const elements = new Array(edits.length);
