@@ -228,7 +228,7 @@ export const block = (fn: (props: Props) => VNode) => {
       // cloneNode saves memory by not reconstrcuting the dom tree
       const el = root.cloneNode(true);
       // we assume our rendering scope is just one block
-      el.textContent = '';
+      parent.textContent = '';
       parent.appendChild(el);
 
       for (let i = 0; i < edits.length; i++) {
@@ -322,7 +322,7 @@ export const block = (fn: (props: Props) => VNode) => {
       // cloneNode saves memory by not reconstrcuting the dom tree
       const el = root.cloneNode(true);
       // we assume our rendering scope is just one block
-      el.textContent = '';
+      parent.textContent = '';
       parent.appendChild(el);
 
       for (let i = 0; i < edits.length; i++) {

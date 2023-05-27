@@ -46,23 +46,22 @@ export const render = (
 
   const el = document.createElement(vnode.type);
 
-  if (vnode.props) {
-    for (const name in vnode.props) {
-      const value = vnode.props[name];
-      if (value instanceof Hole) {
-        edits.push({
-          type: 'attribute',
-          path, // the path we need to traverse to get to the element
-          attribute: name, // to set the value during mount/patch
-          hole: value.key, // to get the value from props during mount/patch
-        });
-        continue;
-      }
-      el[name] = value;
+  for (const name in vnode.props) {
+    const value = vnode.props[name];
+    if (value instanceof Hole) {
+      edits.push({
+        type: 'attribute',
+        path, // the path we need to traverse to get to the element
+        attribute: name, // to set the value during mount/patch
+        hole: value.key, // to get the value from props during mount/patch
+      });
+      continue;
     }
+    el[name] = value;
   }
 
-  for (let i = 0; i < vnode.children?.length; i++) {
+
+  for (let i = 0; i < vnode.children.length; i++) {
     const child = vnode.children[i];
     if (child instanceof Hole) {
       edits.push({
@@ -116,7 +115,7 @@ export const block = (fn: (props: Props) => VNode) => {
       // cloneNode saves memory by not reconstrcuting the dom tree
       const el = root.cloneNode(true);
       // we assume our rendering scope is just one block
-      el.textContent = '';
+      parent.textContent = '';
       parent.appendChild(el);
 
       for (let i = 0; i < edits.length; i++) {
