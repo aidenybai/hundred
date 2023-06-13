@@ -1,6 +1,6 @@
 # 💯 Hundred <img src="https://badgen.net/badgesize/brotli/https/unpkg.com/hundred?color=000000&labelColor=00000&label=bundle%20size" alt="Code Size" /> <a href="https://www.npmjs.com/package/hundred" target="_blank"><img src="https://img.shields.io/npm/v/hundred?style=flat&colorA=000000&colorB=000000" alt="NPM Version" /></a>
 
-Hundred is intended to be a toy block virtual DOM based off of [Million.js](https://github.com/aidenybai/million), and is a proof-of-concept and a learning resource more than a tool you should actually use in production.
+Hundred is intended to be a toy block virtual DOM based off of [Million.js](https://github.com/aidenybai/million), and is a proof-of-concept and a learning resource more than a tool you should actually use in production. This implementation is similarly based off of [`blockdom`](https://github.com/ged-odoo/blockdom).
 
 ## How do I make a block virtual DOM?
 
